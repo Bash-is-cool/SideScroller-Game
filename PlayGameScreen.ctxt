@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.target=PlayGameScreen
+comment1.params=screenWidth\ screenHeight\ isSplash
+comment1.target=PlayGameScreen(int,\ int,\ boolean)
+comment1.text=\r\n\ Default\ constructor\ for\ the\ PlayGameScreen\ class\r\n
+comment2.params=g
+comment2.target=void\ paintComponent(java.awt.Graphics)
+comment2.text=\r\n\ Manually\ control\ what's\ drawn\ on\ this\ JPanel\ by\ calling\ the\ paintComponent\ method\r\n\ with\ a\ graphics\ object\ and\ painting\ using\ that\ object\r\n
+comment3.params=bp1\ bp2
+comment3.target=void\ setBottomPipe(BottomPipe,\ BottomPipe)
+comment3.text=\r\n\ Parsing\ method\ for\ PlayGameScreen's\ global\ BottomPipe\ variables\r\n\ @param\ bp1\ The\ first\ BottomPipe\r\n\ @param\ bp2\ The\ second\ BottomPipe\r\n
+comment4.params=tp1\ tp2
+comment4.target=void\ setTopPipe(TopPipe,\ TopPipe)
+comment4.text=\r\n\ Parsing\ method\ for\ PlayGameScreen's\ global\ TopPipe\ variables\r\n\ @param\ tp1\ The\ first\ TopPipe\r\n\ @param\ tp2\ The\ second\ TopPipe\r\n
+comment5.params=bird
+comment5.target=void\ setBird(Bird)
+comment5.text=\r\n\ Parsing\ method\ for\ PlayGameScreen's\ global\ Bird\ variable\r\n\ @param\ bird\ The\ Bird\ object\r\n
+comment6.params=
+comment6.target=void\ incrementJump()
+comment6.text=\r\n\ Method\ called\ to\ invoke\ an\ increase\ in\ the\ variable\ tracking\ the\ current\r\n\ jump\ score\r\n
+comment7.params=
+comment7.target=int\ getScore()
+comment7.text=\r\n\ Method\ called\ to\ return\ the\ current\ jump\ score\r\n\ @return\r\n
+comment8.params=message
+comment8.target=void\ sendText(java.lang.String)
+comment8.text=\r\n\ Method\ called\ to\ parse\ a\ message\ onto\ the\ screen\r\n\ @param\ message\ The\ message\ to\ parse\r\n
+numComments=9

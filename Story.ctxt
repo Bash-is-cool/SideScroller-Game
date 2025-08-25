@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Story
+comment0.text=\r\n\ Created\ by\ Sam\ on\ 12/5/16.\r\n
+comment1.params=w\ h
+comment1.target=Story(int,\ int)
+comment2.params=g
+comment2.target=void\ paintComponent(java.awt.Graphics)
+comment3.params=e
+comment3.target=void\ keyReleased(java.awt.event.KeyEvent)
+comment4.params=e
+comment4.target=void\ keyTyped(java.awt.event.KeyEvent)
+comment5.params=e
+comment5.target=void\ keyPressed(java.awt.event.KeyEvent)
+numComments=6

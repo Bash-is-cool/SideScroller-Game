@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=Terrain
+comment0.text=\r\n\ Created\ by\ weijiangan\ on\ 03/12/2016.\r\n
+comment1.params=pace\ imgPath
+comment1.target=Terrain(int,\ java.lang.String)
+comment2.params=
+comment2.target=java.awt.Image\ getSprite()
+comment3.params=
+comment3.target=int\ getInitX()
+comment4.params=
+comment4.target=void\ nextPos()
+comment5.params=
+comment5.target=int\ getH()
+comment6.params=
+comment6.target=int\ getW()
+comment7.params=factor
+comment7.target=void\ scaleSprite(float)
+numComments=8

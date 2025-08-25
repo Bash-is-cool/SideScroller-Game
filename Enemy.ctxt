@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=Enemy
+comment0.text=\r\n\ Created\ by\ weijiangan\ on\ 04/12/2016.\r\n
+comment1.params=x\ y\ speed
+comment1.target=Enemy(int,\ int,\ int)
+comment2.params=
+comment2.target=void\ updatePos()
+numComments=3
