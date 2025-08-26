@@ -121,7 +121,7 @@ public class Game implements KeyListener {
                                 killswitch();
                             }
                         } else {
-                             lucky = new ();
+                             lucky = new JOptionPane();
                        
                             lucky.showMessageDialog(null, "You Got Lucky This Time...");
                             System.exit(0);
