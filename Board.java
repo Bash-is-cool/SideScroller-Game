@@ -14,7 +14,7 @@ public class Board extends JPanel implements ComponentListener {
     private final int SPAWN_INTERVAL = 35;
     private final int INVULN_DUR = 30;
     private boolean PLAYGAME;
-    private int frameWidth, frameHeight;
+    public int frameWidth, frameHeight;
     private int LAND_HEIGHT = (int) (0.8 * frameHeight);
     private int WATER_HEIGHT = (int) (0.95 * frameHeight);
     private int MOUNTAIN_HEIGHT = (int) (0.82 * frameWidth);
@@ -34,6 +34,7 @@ public class Board extends JPanel implements ComponentListener {
     private Player player;
     private ArrayList<Enemy> enemies;
     private Iterator<Enemy> iter;
+    private Menu menu = new Menu(false);
 
     public Board() throws Exception {
         addComponentListener(this);
@@ -110,6 +111,13 @@ public class Board extends JPanel implements ComponentListener {
             drawPlayer(g);
             drawEnemies(g);
             drawHUD(g);
+            g.drawImage(menu.pause, frameWidth - 100, 50, 100, 100, null);
+            repaint();
+
+            if(!timer.isRunning()) {
+                g.drawImage(menu.exit, menu.startX, menu.buttonY, menu.buttonWidth, menu.buttonHeight, null);
+                repaint();
+            }
         } else {
             gameOver(g);
         }

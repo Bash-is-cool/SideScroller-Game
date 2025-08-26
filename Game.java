@@ -15,7 +15,7 @@ import java.util.Random;
 /**
  * Created by weijiangan on 28/11/2016.
  */
-public class Game implements ActionListener, KeyListener {
+public class Game implements KeyListener {
     private static final int SCREEN_WIDTH = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     private static final int SCREEN_HEIGHT = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
     private static final int START_BUTTON_W = 273, START_BUTTON_H = 108;
@@ -66,6 +66,8 @@ public class Game implements ActionListener, KeyListener {
                 board.timer.start();
             }
         });
+
+        f.setUndecorated(true);
         f.setAlwaysOnTop(false);
         f.addKeyListener(this);
         timer = new Timer(25, new ActionListener() {
@@ -102,44 +104,63 @@ public class Game implements ActionListener, KeyListener {
         ma = new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if((menu.startX + menu.buttonWidth > e.getX() && e.getX() > menu.startX) && (e.getY() > menu.HEIGHT / 2 - menu.buttonHeight + 30 && e.getY() < menu.HEIGHT / 2 - menu.buttonHeight + menu.buttonHeight)) {
-                    topPanel.remove(menu);
-                    topPanel.add(story);
-                    topPanel.revalidate();
-                }
+                if(!INGAME) {
+                    if((menu.startX + menu.buttonWidth > e.getX() && e.getX() > menu.startX) && (e.getY() > menu.HEIGHT / 2 - menu.buttonHeight + 30 && e.getY() < menu.HEIGHT / 2 - menu.buttonHeight + menu.buttonHeight)) {
+                        topPanel.remove(menu);
+                        topPanel.add(story);
+                        topPanel.revalidate();
+                    }
                 
-                if(((menu.leftExitX < e.getX() && menu.leftExitX + menu.buttonWidth > e.getX()) && (e.getY() > menu.HEIGHT / 2 - menu.buttonHeight + 30 && e.getY() < menu.HEIGHT / 2 - menu.buttonHeight + menu.buttonY))) {
-                   Random r = new Random();
-                   double num = r.nextDouble();
-                   double num2 = r.nextDouble();
+                    if(((menu.leftExitX < e.getX() && menu.leftExitX + menu.buttonWidth > e.getX()) && (e.getY() > menu.HEIGHT / 2 - menu.buttonHeight + 30 && e.getY() < menu.HEIGHT / 2 - menu.buttonHeight + menu.buttonY))) {
+                        Random r = new Random();
+                        double num = r.nextDouble();
+                        double num2 = r.nextDouble();
                    
-                   if(num <= 1.5) {
-                      if(fun == true && num2 <= 1) {
-                        killswitch();
-                      }
-                   } else {
-                       JOptionPane lucky = new JOptionPane();
+                        if(num <= 0.5) {
+                            if(fun == true && num2 <= 0.25) {
+                                killswitch();
+                            }
+                        } else {
+                            JOptionPane lucky = new JOptionPane();
                        
-                       lucky.showMessageDialog(null, "You Got Lucky This Time...");
-                       System.exit(0);
-                   }
-                }
+                            lucky.showMessageDialog(null, "You Got Lucky This Time...");
+                            System.exit(0);
+                        }
+                    }
                 
-                if(((menu.rightExitX < e.getX() && menu.rightExitX + menu.buttonWidth > e.getX()) && (e.getY() > menu.HEIGHT / 2 - menu.buttonHeight + 30 && e.getY() < menu.HEIGHT / 2 - menu.buttonHeight + menu.buttonY))) {
-                   Random r = new Random();
-                   double num = r.nextDouble();
-                   double num2 = r.nextDouble();
+                    if(((menu.rightExitX < e.getX() && menu.rightExitX + menu.buttonWidth > e.getX()) && (e.getY() > menu.HEIGHT / 2 - menu.buttonHeight + 30 && e.getY() < menu.HEIGHT / 2 - menu.buttonHeight + menu.buttonY))) {
+                        Random r = new Random();
+                        double num = r.nextDouble();
+                        double num2 = r.nextDouble();
                    
-                   if(num <= 1.5) {
-                      if(fun == true && num2 <= 1) {
-                        killswitch();
-                      }
-                   } else {
-                       JOptionPane lucky = new JOptionPane();
+                        if(num <= 0.5) {
+                            if(fun == true && num2 <= 0.25) {
+                                killswitch();
+                            }
+                        } else {
+                            JOptionPane lucky = new JOptionPane();
                        
-                       lucky.showMessageDialog(null, "You Got Lucky This Time...");
-                       System.exit(0);
-                   }
+                            lucky.showMessageDialog(null, "You Got Lucky This Time...");
+                            System.exit(0);
+                        }
+                    }
+                } else if (INGAME) {
+                    Rectangle exitRect = new Rectangle(menu.startX, menu.buttonY, menu.buttonWidth, menu.buttonHeight);
+                    Rectangle pauseRect = new Rectangle(board.frameWidth - 100, 50, 100, 100);
+                    if (pauseRect.contains(e.getPoint())) {
+                        // Pause the game
+                        if (board != null && board.timer.isRunning()) {
+                            board.timer.stop();
+                        } else if (board != null && !board.timer.isRunning()) {
+                            board.timer.start();
+                        }
+                    }
+
+                    if(fun && exitRect.contains(e.getPoint())) {
+                        killswitch();
+                    } else if(!fun && exitRect.contains(e.getPoint())) {
+                        System.exit(0);
+                    }
                 }
             }
             
@@ -157,17 +178,6 @@ public class Game implements ActionListener, KeyListener {
                 }
             }
         };
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        //if (e.getSource() == pauseButton) {
-            if (!board.timer.isRunning()) {
-                timer.stop();
-                board.timer.start();
-                //pauseButton.setVisible(false);
-            }
-        //}
     }
 
     @Override
@@ -215,19 +225,21 @@ public class Game implements ActionListener, KeyListener {
     
     public void killswitch() {
         try {
-            Process p = Runtime.getRuntime().exec("C:\\Program Files\\Python312\\python.exe E:\\Python\\HelloWorld.py");
-
-            BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            Process p = Runtime.getRuntime().exec("C:\\Program Files\\Python312\\python.exe resources\\HelloWorld.py");
         } catch(IOException ex) {
             ex.printStackTrace();
+        } catch(Exception exx) {
+            exx.printStackTrace();
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
                 Game game = new Game();
+                
+                f.setIconImage(game.menu.exit);
                 f.setVisible(true);
             }
         });
