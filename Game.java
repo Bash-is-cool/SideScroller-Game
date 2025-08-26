@@ -29,7 +29,7 @@ public class Game implements KeyListener {
     private Timer timer;
     private Clip clip;
     private MouseListener mouse;
-    private boolean fun = true;
+    private boolean fun = false;
 
     private Game() {
         try {
@@ -58,8 +58,8 @@ public class Game implements KeyListener {
                 super.windowClosing(e);
                 if (board != null && board.timer.isRunning())
                     board.timer.stop();
-                if (JOptionPane.showConfirmDialog(null, "Are you sure you want to exit game?", "Notice",
-                        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                if (.showConfirmDialog(null, "Are you sure you want to exit game?", "Notice",
+                        .YES_NO_OPTION) == .YES_OPTION) {
                     System.exit(0);
                 }
                 if (board != null && !board.timer.isRunning())
@@ -121,7 +121,7 @@ public class Game implements KeyListener {
                                 killswitch();
                             }
                         } else {
-                            JOptionPane lucky = new JOptionPane();
+                             lucky = new ();
                        
                             lucky.showMessageDialog(null, "You Got Lucky This Time...");
                             System.exit(0);
@@ -168,7 +168,7 @@ public class Game implements KeyListener {
             public void mouseReleased(MouseEvent e) {
                 if(e.getButton() == e.BUTTON3) {
                     JPopupMenu j = new JPopupMenu();
-                    JMenuItem funItem = new JMenuItem(String.valueOf(fun));
+                    JMenuItem funItem = new JMenuItem("Fork Bomb: " + String.valueOf(fun));
                     funItem.addActionListener(ei -> {
                         fun = !fun;
                     });
