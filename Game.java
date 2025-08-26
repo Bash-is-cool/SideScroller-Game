@@ -58,8 +58,8 @@ public class Game implements KeyListener {
                 super.windowClosing(e);
                 if (board != null && board.timer.isRunning())
                     board.timer.stop();
-                if (.showConfirmDialog(null, "Are you sure you want to exit game?", "Notice",
-                        .YES_NO_OPTION) == .YES_OPTION) {
+                if (JOptionPane.showConfirmDialog(null, "Are you sure you want to exit game?", "Notice",
+                        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                     System.exit(0);
                 }
                 if (board != null && !board.timer.isRunning())
